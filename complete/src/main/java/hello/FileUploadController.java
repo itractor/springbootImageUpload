@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import hello.storage.StorageFileNotFoundException;
 import hello.storage.StorageService;
 
+@CrossOrigin
 @Controller
 public class FileUploadController {
 
@@ -52,7 +54,7 @@ public class FileUploadController {
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
     }
 
-    @PostMapping("/")
+    @PostMapping("/upload")
     public String handleFileUpload(@RequestParam("file") MultipartFile file,
             RedirectAttributes redirectAttributes) {
 
